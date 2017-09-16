@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 <h2>Account Information</h2>
-    <form>
+    <form (submit)='onSubmit()'>
         <p>*First Name</p>
         <input type='text'
         name="firstName"
@@ -9,6 +9,7 @@
         #firstName="ngModel"
         />
         <p class= 'warning' *ngIf='firstName.errors'> First name is required. </p>{{firstName.errors | json}}<br>
+
         <p>*Last Name</p>
         <input type='text' 
         name="lastName"
@@ -17,6 +18,7 @@
         #lastName="ngModel"
         />
         <p class= 'warning' *ngIf='lastName.errors'> Last name is required. </p>{{lastName.errors | json}}<br>
+
         <p>*Email</p>
         <input type='text'
         name="email"
@@ -25,23 +27,56 @@
         [(ngModel)]="user.email"
         #email="ngModel"
         />
-        <p class= 'warning'> Email must be valid. </p>{{email.errors | json}}<br>
+        <p class= 'warning' *ngIf='email.errors'> Email must be valid. </p>{{email.errors | json}}<br>
+
         <p>*Password</p>
-        <input type='password'>
-        <p class= 'warning'> Pass must be 16 characters long. </p><br>
+        <input type='password' 
+        name="pass"
+        required
+        minlength="16" 
+        [(ngModel)]="user.pass"
+        #pass="ngModel" 
+        />
+        <p class= 'warning' *ngIf='pass.errors'> Pass must be 16 characters long. </p>{{pass.errors | json}}{{user.pass | json}}<br>
+
         <p>*Password Confirmation</p>
-        <input type='password'>
-        <p class= 'warning'> Pass cofirm must match password. </p><br>
+        <input type='password'
+        name="confirm"
+        required
+        [(ngModel)]="user.confirm"
+        #confirm="ngModel"
+        />
+        <p class= 'warning' *ngIf='user.confirm!=user.pass'> Pass cofirm must match password. </p>{{confirm.errors | json}}{{user.confirm | json}}<br>
+
         <p>*Street Address</p>
-        <input type='text'>
-        <p class= 'warning'> Address is required </p><br>
+        <input type='text'
+        name='street'
+        required
+        [(ngModel)]='user.street'
+        #street='ngModel'
+        />
+        <p class= 'warning' *ngIf='!user.street!'> Address is required </p>{{street.errors | json}}<br>
+
         <p>*Unit/Apt #</p>
-        <input type='text'><br>                                
+        <input type='text'><br>  
+
         <p>*City</p>
-        <input type='text'>
-        <p class= 'warning'> City is required </p><br>
+        <input type='text'
+        name='city'
+        required
+        [(ngModel)]='user.city'
+        #city='ngModel'
+        />
+        <p class= 'warning' *ngIf="city.errors"> City is required </p>
+        {{city.errors | json}}<br>
+        
         <p>*State</p>
-        <input type='text'>
-        <p class= 'warning'> State is required </p><br>    
+        <input type='text'
+        name='state'
+        required
+        [(ngModel)]='state.city'
+        #state='ngModel'
+        />
+        <p class= 'warning' *ngIf='state.errors'> State is required </p>{{city.errors | json}}<br>    
         <input type='submit' value='Register'>
     </form>            
