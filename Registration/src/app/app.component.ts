@@ -10,6 +10,7 @@ export class AppComponent {
 
 	user = {
 		lastName:'',
+		error:'',
 	}
 
 	onSubmit(){

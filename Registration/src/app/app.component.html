@@ -78,5 +78,6 @@
         #state='ngModel'
         />
         <p class= 'warning' *ngIf='state.errors'> State is required </p>{{city.errors | json}}<br>    
-        <input type='submit' value='Register'>
+        <input type='submit' value='Register'> 
+        <!-- ^^^^ add the add a button and add an *ngIf on both submit and button to toggle both.. If submit, it toggles submit, it will send information -->
     </form>            
